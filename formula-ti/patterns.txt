@@ -1,4 +1,7 @@
 
+Patterns built with: 
+  http://sometimes.planet-99.net/patterns.html
+
 Race car: 1 4-char sprite
   0003343F370706040406777F710F080F00C02CFCECE060202060EEFE8EF010F0
 
