@@ -1,4 +1,8 @@
 
+Vader TIE Fighter
+
+00003050A0E3C6FDFDC6E3A05030000000000C0A05C763BFBF63C7050A0C0000
+
 Patterns built with: 
   http://sometimes.planet-99.net/patterns.html
 
