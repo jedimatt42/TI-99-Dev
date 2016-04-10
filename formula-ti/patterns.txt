@@ -1,4 +1,3 @@
-
 Patterns built with: 
   http://sometimes.planet-99.net/patterns.html
 
