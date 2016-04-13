@@ -26,26 +26,6 @@ class TiFile extends TiHeader {
                 header[7] == 'S')
     }
 
-    int PROGRAM = 0x01
-    int INTERNAL = 0x02
-    int PROTECTED = 0x04
-    int VARIABLE = 0x80
-
-    String toString() {
-        StringBuilder sb = new StringBuilder()
-        sb.append("Status byte: ").append(flags()).append(" ")
-        sb.append(isProtected() ? "Protected" : "Unprotected").append(" ")
-        sb.append(isProgram() ? "Program" : "Data").append(" ")
-        sb.append(isInternal() ? "Internal" : "Display").append(" ")
-        sb.append(isVariable() ? "Variable" : "Fixed").append(" ")
-
-        sb.append("Record length: ").append(recordLength()).append(" ")
-        sb.append("Records per sector: ").append(recordsPerSector()).append(" ")
-        sb.append("Sectors: ").append(getSectors()).append(" ")
-        sb.append("Record count:").append(recordCount()).append(" ")
-        sb.append("EOF Offset: ").append(eofOffset())
-    }
-
     int recordLength() {
         return fromByte(header[13])
     }
@@ -55,7 +35,7 @@ class TiFile extends TiHeader {
     }
 
     int recordCount() {
-        return fromByte(header[14])
+        return fromByte(header[15]) + (fromByte(header[14]) * 256)
     }
 
     int eofOffset() {
@@ -68,22 +48,6 @@ class TiFile extends TiHeader {
 
     int flags() {
         return fromByte(header[10])
-    }
-
-    boolean isVariable() {
-        return flags() & VARIABLE
-    }
-
-    boolean isProtected() {
-        return flags() & PROTECTED
-    }
-
-    boolean isInternal() {
-        return flags() & INTERNAL
-    }
-
-    boolean isProgram() {
-        return flags() & PROGRAM
     }
 
     String filename() {
