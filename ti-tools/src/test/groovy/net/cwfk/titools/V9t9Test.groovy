@@ -5,12 +5,12 @@ import spock.lang.Unroll
 /**
  * Created by matthew on 4/10/16.
  */
-class TiFilesTest extends spock.lang.Specification {
+class V9t9Test extends spock.lang.Specification {
 
     @Unroll
     def "test fromByte #value"() {
         when:
-        TiFile file = dv80s1()
+        V9T9 file = dv80s1()
         byte bvalue = value
 
         then:
@@ -26,7 +26,7 @@ class TiFilesTest extends spock.lang.Specification {
 
     def "test dis/var 80 small file sector size"() {
         when:
-        TiFile file = dv80s1()
+        V9T9 file = dv80s1()
 
         then:
         file.sectors == 1
@@ -38,16 +38,16 @@ class TiFilesTest extends spock.lang.Specification {
         !file.isProgram()
     }
 
-    def "test dis/var 80 missing filename"() {
+    def "test dis/var 80 valid filename"() {
         when:
-        TiFile file = dv80s1()
+        V9T9 file = dv80s1()
 
         then:
-        file.filename() == nullname()
+        file.filename() == "DISVAR80".padRight(10, ' ')
     }
 
-    private TiFile dv80s1() {
-        new TiFile(this.class.getResourceAsStream("DISVAR80.tifile"))
+    private V9T9 dv80s1() {
+        new V9T9(this.class.getResourceAsStream("DISVAR80.v9t9"))
     }
 
     private String nullname() {
