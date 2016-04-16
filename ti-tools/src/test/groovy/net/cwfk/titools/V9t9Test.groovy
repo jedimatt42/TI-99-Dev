@@ -1,11 +1,14 @@
 package net.cwfk.titools
 
+import spock.lang.Specification
 import spock.lang.Unroll
 
 /**
  * Created by matthew on 4/10/16.
+ *
+ * Test header parsing for V9T9 file on a disk (matches TI FDC File Descriptor Record)
  */
-class V9t9Test extends spock.lang.Specification {
+class V9t9Test extends Specification {
 
     @Unroll
     def "test fromByte #value"() {
@@ -50,7 +53,7 @@ class V9t9Test extends spock.lang.Specification {
         new V9T9(this.class.getResourceAsStream("DISVAR80.v9t9"))
     }
 
-    private String nullname() {
+    private static String nullname() {
         new String('\0').padLeft(10, '\0')
     }
 }

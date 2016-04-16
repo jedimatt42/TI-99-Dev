@@ -15,6 +15,7 @@ class TiFile extends TiHeader {
         header = headerBytes(inputStream)
     }
 
+    @Override
     boolean isValid() {
         return (header[0] == '\07' &&
                 header[1] == 'T' &&
@@ -26,32 +27,44 @@ class TiFile extends TiHeader {
                 header[7] == 'S')
     }
 
+    @Override
     int recordLength() {
         return fromByte(header[13])
     }
 
+    @Override
     int recordsPerSector() {
         return fromByte(header[11])
     }
 
+    @Override
     int recordCount() {
         return fromByte(header[15]) + (fromByte(header[14]) * 256)
     }
 
+    @Override
     int eofOffset() {
         return fromByte(header[12])
     }
 
+    @Override
     int getSectors() {
         return fromByte(header[9]) + (fromByte(header[8]) * 256)
     }
 
+    @Override
     int flags() {
         return fromByte(header[10])
     }
 
+    @Override
     String filename() {
         // often not set.
         new java.lang.String(header, 0x10, 0x0A)
+    }
+
+    @Override
+    String toString() {
+        return "TIFILE: " + super.toString()
     }
 }

@@ -54,4 +54,9 @@ class V9T9 extends TiHeader {
     String filename() {
         return new String(header, 0, 10)
     }
+
+    @Override
+    String toString() {
+        return "V9T9: " + super.toString()
+    }
 }

@@ -1,11 +1,14 @@
 package net.cwfk.titools
 
+import spock.lang.Specification
 import spock.lang.Unroll
 
 /**
  * Created by matthew on 4/10/16.
+ *
+ * Test parsing TIFILE xmodem header
  */
-class TiFilesTest extends spock.lang.Specification {
+class TiFilesTest extends Specification {
 
     @Unroll
     def "test fromByte #value"() {
@@ -50,7 +53,7 @@ class TiFilesTest extends spock.lang.Specification {
         new TiFile(this.class.getResourceAsStream("DISVAR80.tifile"))
     }
 
-    private String nullname() {
+    private static String nullname() {
         new String('\0').padLeft(10, '\0')
     }
 }
